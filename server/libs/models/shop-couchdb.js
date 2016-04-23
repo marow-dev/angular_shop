@@ -22,7 +22,7 @@ exports.login = {
 	auth: function (params, cb) {
 		function parseResult(err, res) {
 			if (res.length == 0) {
-				cb(false);
+				cb('', 401);
 			} else {
 				res = res[0];
 				var dbPass = res.value;
