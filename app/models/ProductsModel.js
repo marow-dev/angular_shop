@@ -11,6 +11,9 @@
                 },
                 loadRelated: function () {
                     return $resource('shop/product/related', {}).query().$promise;
+                },
+                loadCategory: function (id) {
+                    return $resource('shop/products/category', {id: id}).query().$promise;
                 }
             };
         }]);

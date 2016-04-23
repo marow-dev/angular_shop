@@ -108,6 +108,8 @@
                 model.products.load({'latest': 1}, sendData);
             } else if (ident === 'related') {
                 model.products.load({'related': 1}, sendData);
+            } else if (ident === 'category') {
+                model.products.load({'category': params.id}, sendData);
             }
         });
         routes.add('product', 'GET', function (ident, params) {
