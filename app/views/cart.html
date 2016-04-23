@@ -25,7 +25,7 @@ form span.error { color:red; }
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>Zdjęcie</th>
+						<th width="90px">Zdjęcie</th>
 						<th>Nazwa produktu</th>
 						<th>Ilość</th>
 						<th>Cena jednostkowa</th>
@@ -34,7 +34,7 @@ form span.error { color:red; }
 				</thead>
 				<tbody>
 					<tr ng-repeat="item in cart.cart.getProducts()">
-						<td><a href="product_detail.html"><img alt="" src="{{ item.photo_url }}" style="width: 20%;"></a></td>
+						<td><a href="product_detail.html"><img alt="" src="{{ item.photo_url }}" style="width: 100%;"></a></td>
 						<td>{{ item.name }}</td>
 						<td><input type="text" value="{{ item.cart_count }}" class="input-mini"></td>
 						<td>{{ item.price | formatPrice }}</td>
