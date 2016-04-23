@@ -1,0 +1,107 @@
+<section class="main-content" ng-controller="ProductController as product">
+	<section class="header_text sub">
+		<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" />
+		<h4><span>{{ product.details.name }}</span></h4>
+	</section>
+	<div class="row">
+		<div class="span9">
+			<div class="row">
+				<div class="span4">
+					<a href="{{ product.details.photo_url }}" class="thumbnail" data-fancybox-group="group1" title="{{ product.details.photo_name }}"><img alt="" src="{{ product.details.photo_url }}" /></a>
+					<ul class="thumbnails small">
+						<li class="span1" ng-repeat="gallery_img in product.details.gallery">
+							<a href="{{ gallery_img }}" class="thumbnail" data-fancybox-group="group1"><img src="{{ gallery_img }}" alt="" /></a>
+						</li>
+					</ul>
+				</div>
+				<div class="span5">
+					<address>
+						<div ng-repeat="prop in product.details.properties">
+							<strong>{{ prop.name }}: </strong> <span>{{ prop.value }}</span><br>
+						</div>
+					</address>
+					<h4><strong>Cena: {{ product.details.price | formatPrice }}</strong></h4>
+				</div>
+				<div class="span5">
+					<form class="form-inline" ng-controller="CartController as cart">
+						<label>Ilość:</label>
+						<input type="text" class="span1" placeholder="1" ng-model="cart.quantity">
+						<button class="btn btn-inverse" type="submit" ng-click="cart.addProduct(product.idProduct)">Dodaj do koszyka</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span9">
+					<ul class="nav nav-tabs" id="myTab">
+						<li class="active"><a href="#home">Opis</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="home">{{ product.details.description }}</div>
+					</div>
+				</div>
+				<div class="span9">
+					<br>
+					<h4 class="title">
+						<span class="pull-left"><span class="text"><strong>Produkty</strong> podobne</span></span>
+					</h4>
+					<div class="carousel slide" ng-controller="ProductRelatedController as productRelated">
+						<div class="carousel-inner">
+							<div class="active item">
+								<ul class="thumbnails listing-products">
+									<li class="span3" ng-repeat="product in productRelated.list">
+										<div class="product-box">
+											<span class="sale_tag"></span>
+											<p><a href="#/product/{{ product.id }}"><img src="{{ product.photo_url }}" alt="" /></a></p>
+											<a href="#/product/{{ product.id }}" class="title">{{ product.name }}</a><br/>
+											<p class="category">{{ product.promo_name }}</p>
+											<p class="price">{{ product.price | formatPrice }}</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="span3 col">
+			<div class="block">
+				<h4 class="title">
+					<span class="pull-left"><span class="text">Randomize</span></span>
+					<span class="pull-right">
+						<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+					</span>
+				</h4>
+				<div id="myCarousel" class="carousel slide">
+					<div class="carousel-inner">
+						<div class="active item">
+							<ul class="thumbnails listing-products">
+								<li class="span3">
+									<div class="product-box">
+										<span class="sale_tag"></span>
+										<a href="product_detail.html"><img alt="" src="themes/images/ladies/7.jpg" /></a><br/>
+										<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
+										<a href="#" class="category">Suspendisse aliquet</a>
+										<p class="price">$261</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="item">
+							<ul class="thumbnails listing-products">
+								<li class="span3">
+									<div class="product-box">
+										<a href="product_detail.html"><img alt="" src="themes/images/ladies/8.jpg" /></a><br/>
+										<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
+										<a href="#" class="category">Urna nec lectus mollis</a>
+										<p class="price">$134</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

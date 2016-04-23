@@ -1,0 +1,15 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "Server",
+  "main": "server.js",
+  "dependencies": {
+    "cradle": "^0.7.1"
+  },
+  "devDependencies": {},
+  "author": "Marcin Owczarczyk",
+  "license": "BSD-2-Clause"
+}

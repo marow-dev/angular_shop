@@ -1,0 +1,10 @@
+<ul>
+    <li ng-repeat="category in categories" shop-init-categories>
+        <a href="index.html#/category/{{ category.id }}">{{ category.name }}</a>
+        <ul ng-show="category.subcategories">
+            <li ng-repeat="sub in category.subcategories">
+                <a href="index.html#/category/{{ sub.id }}">{{ sub.name }}</a>
+            </li>
+        </ul>
+    </li>
+</ul>

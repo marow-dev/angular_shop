@@ -1,0 +1,47 @@
+<section class="navbar main-menu">
+    <div class="navbar-inner main-menu">
+        <a href="index.html#/" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt="" /></a>
+        <nav id="menu" class="pull-right" ng-controller="MainPageCategoriesController">
+            <component-categories></component-categories>
+        </nav>
+    </div>
+</section>
+<section  class="homepage-slider" id="home-slider" ng-controller="BannersController as banners">
+<div class="flexslider">
+    <ul class="slides">
+        <li ng-repeat="banner in banners.list" shop-init-slider>
+            <img src="{{ banner.image_url }}" alt="" />
+        </li>
+    </ul>
+</div>
+</section>
+<section class="main-content">
+    <div class="row">
+        <div class="span12">
+            <div class="row">
+                <div class="span12">
+                    <h4 class="title">
+                        <span class="pull-left"><span class="text"><span class="line">Lista <strong>produktów</strong></span></span></span>
+                    </h4>
+                    <div ng-controller="CategoryController as category">
+                        <div class="carousel-inner">
+                            <div class="active item">
+                                <ul class="thumbnails">
+                                    <li class="span3" ng-repeat="product in category.products">
+                                        <div class="product-box">
+                                            <span class="sale_tag"></span>
+                                            <p><a href="#/product/{{ product.id }}"><img src="{{ product.photo_url }}" alt="" /></a></p>
+                                            <a href="#/product/{{ product.id }}" class="title">{{ product.name }}</a><br/>
+                                            <p class="category">{{ product.promo_name }}</p>
+                                            <p class="price">{{ product.price | formatPrice }}</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
+</section>
