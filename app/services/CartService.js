@@ -35,12 +35,22 @@
             var getItemsCount = function () {
                 return products.length;
             }
+            /**
+             * Returns true if cart has items
+             *
+             * @method hasItems
+             * @return {Boolean}
+             */
+            var hasItems = function () {
+                return products.length > 0;
+            }
 
             return {
                 addProduct: addProduct,
                 getProducts: getProducts,
                 getSum: getSum,
-                getItemsCount: getItemsCount
+                getItemsCount: getItemsCount,
+                hasItems: hasItems
             }
         }
     );
