@@ -1,39 +1,94 @@
 (function () {
     'use strict';
+
+    /**
+     * Cart item object - wrapper around product.
+     *
+     * @class CartItem
+     * @constructor
+     */
+    function CartItem(product) {
+        this.product = product;
+        this.vCartCount = 1;
+        this.addCount = function (addValue) {
+            this.vCartCount = this.vCartCount + parseInt(addValue, 10);
+        };
+        this.cartCount = function (newValue) {
+            if (newValue === undefined) {
+                return this.vCartCount;
+            }
+            this.vCartCount = newValue;
+        };
+        this.photoUrl = function () {
+            return this.product.photo_url;
+        };
+        this.price = function () {
+            return this.product.price;
+        };
+        this.name = function () {
+            return this.product.name;
+        };
+        this.cartPrice = function () {
+            return this.vCartCount * this.product.price;
+        };
+        this.compare = function (product) {
+            return product.symbol === this.product.symbol;
+        };
+    }
+
     angular.module('shopApp').service('Cart',
         function () {
-            var products = [];
+            var items = [];
+            /**
+             * Adds product to the cart. If product exists in cart changes its count.
+             *
+             * @method addProduct
+             * @param {Object} product
+             * @param {Number} cartCount
+             * @return {Boolean} Return true on success
+             */
             var addProduct = function (product, cartCount) {
                 var found = false, v;
-                if (products.length) {
-                    for (var v in products) {
-                        if (products[v].id == product.id) {
-                            products[v].cart_count = products[v].cart_count + parseInt(cartCount);
-                            products[v].cart_price = products[v].cart_count * product.price;
+                if (items.length) {
+                    for (var v in items) {
+                        if (items[v].compare(product)) {
+                            items[v].addCount(cartCount);
                             found = true;
                         }
                     }
                 }
                 if (found === false) {
-                    product.cart_count = cartCount;
-                    product.cart_price = product.price;
-                    products.push(product);
+                    var item = new CartItem(product, cartCount);
+                    items.push(item);
                 }
+                return true;
             }
-            var getProducts = function () {
-                return products;
+            var getItems = function () {
+                return items;
             }
+            /**
+             * Returns sum of items in cart
+             *
+             * @method getSum
+             * @return {Number}
+             */
             var getSum = function () {
                 var sum = 0, v;
-                if (products.length) {
-                    for (var v in products)	{
-                        sum = sum + (products[v].cart_price);
+                if (items.length) {
+                    for (var v in items)	{
+                        sum = sum + (items[v].cartPrice());
                     }
                 }
                 return sum;
             }
+            /**
+             * Return number of items in cart
+             *
+             * @method getItemsCount
+             * @return {Number}
+             */
             var getItemsCount = function () {
-                return products.length;
+                return items.length;
             }
             /**
              * Returns true if cart has items
@@ -42,12 +97,12 @@
              * @return {Boolean}
              */
             var hasItems = function () {
-                return products.length > 0;
+                return items.length > 0;
             }
 
             return {
                 addProduct: addProduct,
-                getProducts: getProducts,
+                getItems: getItems,
                 getSum: getSum,
                 getItemsCount: getItemsCount,
                 hasItems: hasItems

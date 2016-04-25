@@ -36,12 +36,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="item in cart.cart.getProducts()">
-						<td><a href="product_detail.html"><img alt="" src="{{ item.photo_url }}" style="width: 100%;"></a></td>
-						<td>{{ item.name }}</td>
-						<td><input type="text" value="{{ item.cart_count }}" class="input-mini"></td>
-						<td>{{ item.price | formatPrice }}</td>
-						<td>{{ item.cart_price | formatPrice }}</td>
+					<tr ng-repeat="item in cart.cart.getItems()">
+						<td><a href="product_detail.html"><img alt="" src="{{ item.photoUrl() }}" style="width: 100%;"></a></td>
+						<td>{{ item.name() }}</td>
+						<td><input type="text" value="{{ item.cartCount() }}" ng-model="item.cartCount" ng-model-options="{ getterSetter: true }" class="input-mini"></td>
+						<td>{{ item.price() | formatPrice }}</td>
+						<td>{{ item.cartPrice() | formatPrice }}</td>
 					</tr>
 					<tr>
 						<td>&nbsp;</td>
