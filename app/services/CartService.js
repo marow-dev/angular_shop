@@ -22,6 +22,10 @@
         this.photoUrl = function () {
             return this.product.photo_url;
         };
+        this.id = function () {
+            var id = this.product._id.split('_')[1];
+            return id;
+        };
         this.price = function () {
             return this.product.price;
         };
