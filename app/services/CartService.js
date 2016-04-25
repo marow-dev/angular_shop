@@ -11,7 +11,7 @@
         this.product = product;
         this.vCartCount = 1;
         this.addCount = function (addValue) {
-            this.vCartCount = this.vCartCount + parseInt(addValue, 10);
+            this.vCartCount = parseInt(this.vCartCount, 10) + parseInt(addValue, 10);
         };
         this.cartCount = function (newValue) {
             if (newValue === undefined) {
