@@ -32,7 +32,7 @@
             return this.vCartCount * this.product.price;
         };
         this.compare = function (product) {
-            return product.symbol === this.product.symbol;
+            return product._id === this.product._id;
         };
     }
 
