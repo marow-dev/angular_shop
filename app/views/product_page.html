@@ -1,3 +1,8 @@
+<script>
+	$(document).ready(function () {
+		$('#btnAdd2Cart').mhint({width: 200, close_time: 700, position: 'top', onmouse_display: false});
+	});
+</script>
 <section class="main-content" ng-controller="ProductController as product">
 	<section class="header_text sub">
 		<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" />
@@ -26,7 +31,7 @@
 					<form class="form-inline" ng-controller="CartController as cart">
 						<label>Ilość:</label>
 						<input type="text" class="span1" placeholder="1" ng-model="cart.quantity">
-						<button class="btn btn-inverse" type="submit" ng-click="cart.addProduct(product.idProduct)">Dodaj do koszyka</button>
+						<button id="btnAdd2Cart" class="btn btn-inverse" type="submit" ng-click="cart.addProduct(product.idProduct)" ng-attr-data-hint="{{cart.message}}" hint>Dodaj do koszyka</button>
 					</form>
 				</div>
 			</div>
