@@ -72,7 +72,6 @@
                 }
                 countId = countId + 1;
                 if (typeof callback === 'function') {
-                    console.log('callback-run');
                     callback();
                 }
                 return true;
@@ -100,7 +99,6 @@
                     message = params.message || '';
                     callback = params.callback || null;
                 }
-                console.log('hint-run', message, callback);
                 display(this, message, callback);
             });
         });
