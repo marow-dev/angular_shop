@@ -1,6 +1,11 @@
 var cradle = require('cradle');
+var fs = require('fs');
 var dbProducts = new (cradle.Connection)().database('products');
 var dbShop = new (cradle.Connection)().database('shop');
+
+function logError(err) {
+    fs.writeFile('/var/log/couchdb-error.log', err);
+}
 
 exports.orders = {
     by_login: function (ident, cb) {
@@ -67,6 +72,9 @@ exports.register = {
 				cb('', 409);
 			} else {
 				dbShop.save(params.login, params, function(err, res) {
+                    if (err) {
+                        logError(err);
+                    }
 					cb('', res ? 201 : 500);
 				});
 			}
