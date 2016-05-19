@@ -8,31 +8,36 @@
 </section>
 <section class="header_text sub">
 	<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-	<h4><span>Konto klienta</span></h4>
+	<h4><span>Account</span></h4>
 </section>
 
 <section class="main-content" ng-controller="UserController as user">
     <div class="row" ng-show="user.data.isGuest()">
-		<div class="span5">
-			<h4><span>Nie jesteś zalogowany</span></h4>
+		<div class="span12">
+			<h4><span>Please log in</span></h4>
 		</div>
 	</div>
 
     <div class="row" ng-hide="user.data.isGuest()" ng-controller="OrdersController as orders">
         <div class="span12">
-            <table class="table" width="100%">
+            <div class="row" ng-show="orders.list.length <= 0">
+                <div class="span12">
+                    <h4><span>No orders</span></h4>
+                </div>
+            </div>
+            <table class="table" width="100%" ng-show="orders.list.length > 0">
                 <tr ng-repeat="order in orders.list">
                     <td>
                         {{ order.id }}
                         <div class="order-details">
                             <div class="address">
-                                <div class="order-header">Dane klienta</div>
+                                <div class="order-header">Customer</div>
                                 {{ order.doc.customer.firstname }} {{ order.doc.customer.lastname }}<br>
                                 {{ order.doc.customer.zipCode }} {{ order.doc.customer.city }}<br>
                                 {{ order.doc.customer.address }}<br>
                             </div>
                             <div class="cart">
-                                <div class="order-header">Koszyk</div>
+                                <div class="order-header">Cart</div>
                                 <ul>
                                     <li ng-repeat="item in order.doc.cart">{{ item.name }} {{ item.cart_count }} x {{ item.cart_price }}</li>
                                 </ul>
