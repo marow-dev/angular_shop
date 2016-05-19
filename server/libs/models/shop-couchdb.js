@@ -72,6 +72,7 @@ exports.register = {
 				cb('', 409);
 			} else {
                 params.type = 'user';
+                params.pass = require('crypto').createHash('md5').update(params.pass).digest('hex');
 				dbShop.save(params.login, params, function(err, res) {
                     if (err) {
                         logError(err);

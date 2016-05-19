@@ -464,7 +464,7 @@ if (operation == 'views') {
 		login: {
 			map: function(doc) {
 				if (doc.type == 'user') {
-					emit(doc.login, doc.hash);
+					emit(doc.login, doc.pass);
 				}
 			}
 		}
