@@ -18,7 +18,7 @@
 
 <section class="header_text sub">
 	<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-	<h4><span>Koszyk</span></h4>
+	<h4><span>Cart</span></h4>
 </section>
 
 <section class="main-content" ng-controller="CartController as cart">
@@ -28,11 +28,11 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th width="90px">Zdjęcie</th>
-						<th>Nazwa produktu</th>
-						<th width="110px">Ilość</th>
-						<th width="110px">Cena jednostkowa</th>
-						<th width="110px">Suma</th>
+						<th width="90px">Photo</th>
+						<th>Product name</th>
+						<th width="110px">Quantity</th>
+						<th width="110px">Price</th>
+						<th width="110px">Sum</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -53,12 +53,12 @@
 			</table>
 			<hr>
 			<p class="cart-total right">
-				<strong>Kwota do zapłacenia</strong>: {{ cart.cart.getSum() | formatPrice }}<br>
+				<strong>Value</strong>: {{ cart.cart.getSum() | formatPrice }}<br>
 			</p>
 			<hr/>
 		</div>
 		<div class="span12" ng-show="cart.cart.getItemsCount() == 0">
-			<h4 class="center">W tej chwili nie masz żadnych produktów w koszyku</h4>
+			<h4 class="center">Your cart is empty</h4>
 		</div>
 	</div>
 
@@ -67,44 +67,44 @@
     		<div class="row">
     			<div class="span12">
     				<div class="accordion-heading">
-    					Konto i dane adresowe
+    					Account and address
     				</div>
     				<div id="collapseTwo" class="accordion-body">
     					<div class="accordion-inner">
     						<div class="row-fluid">
     							<div class="span6">
-    								<h4>Dane podstawowe</h4>
+    								<h4>Data</h4>
     								<div class="control-group">
     									<label class="control-label"><span class="required">*</span>Imię</label>
     									<div class="controls">
     										<input type="text" placeholder="" name="firstname" ng-model="customer.firstname" class="input-xlarge" ng-required="true">
                                             <div ng-show="customerForm.$submitted || customerForm.firstname.$touched">
-                                                <span ng-show="customerForm.firstname.$error.required" class="error">Wartość jest wymagana.</span>
+                                                <span ng-show="customerForm.firstname.$error.required" class="error">Field is required.</span>
                                             </div>
     									</div>
     								</div>
     								<div class="control-group">
-    									<label class="control-label"><span class="required">*</span>Nazwisko</label>
+    									<label class="control-label"><span class="required">*</span>Surname</label>
     									<div class="controls">
     										<input type="text" placeholder="" name="lastname" ng-model="customer.lastname" class="input-xlarge" ng-required="true">
     										<div ng-show="customerForm.$submitted || customerForm.lastname.$touched">
-                                                <span ng-show="customerForm.lastname.$error.required" class="error">Wartość jest wymagana.</span>
+                                                <span ng-show="customerForm.lastname.$error.required" class="error">Field is required.</span>
                                             </div>
     									</div>
     								</div>
     								<div class="control-group">
-    									<label class="control-label"><span class="required">*</span>Adres e-mail</label>
+    									<label class="control-label"><span class="required">*</span>E-mail</label>
     									<div class="controls">
     										<input type="email" placeholder="" name="email" ng-model="customer.email" class="input-xlarge" ng-required="true">
                                             <div ng-show="customerForm.$submitted || customerForm.email.$touched">
-                                                <span ng-show="customerForm.email.$error.required" class="error">Wartość jest wymagana.</span>
-                                                <span ng-show="customerForm.email.$error.email" class="error">Podany adres e-mail jest nieprawidłowy.</span>
+                                                <span ng-show="customerForm.email.$error.required" class="error">Field is required.</span>
+                                                <span ng-show="customerForm.email.$error.email" class="error">This e-mail address is incorrect.</span>
                                             </div>
     									</div>
     								</div>
     							</div>
     							<div class="span6">
-    								<h4>Dane adresowe</h4>
+    								<h4>Address</h4>
     								<div class="control-group">
     									<label class="control-label">Nazwa firmy</label>
     									<div class="controls">
@@ -112,42 +112,42 @@
     									</div>
     								</div>
     								<div class="control-group">
-    									<label class="control-label"><span class="required">*</span>Adres:</label>
+    									<label class="control-label"><span class="required">*</span>Address:</label>
     									<div class="controls">
     										<input type="text" placeholder="" name="address"  ng-model="customer.address" class="input-xlarge" ng-required="true">
     										<div ng-show="customerForm.$submitted || customerForm.address.$touched">
-                                                <span ng-show="customerForm.address.$error.required" class="error">Wartość jest wymagana.</span>
+                                                <span ng-show="customerForm.address.$error.required" class="error">Field is required.</span>
                                             </div>
     									</div>
     								</div>
     								<div class="control-group">
-    									<label class="control-label"><span class="required">*</span>Miasto:</label>
+    									<label class="control-label"><span class="required">*</span>City:</label>
     									<div class="controls">
     										<input type="text" placeholder="" name="city"  ng-model="customer.city" class="input-xlarge" ng-required="true">
     										<div ng-show="customerForm.$submitted || customerForm.city.$touched">
-                                                <span ng-show="customerForm.city.$error.required" class="error">Wartość jest wymagana.</span>
+                                                <span ng-show="customerForm.city.$error.required" class="error">Field is required.</span>
                                             </div>
     									</div>
     								</div>
     								<div class="control-group">
-    									<label class="control-label"><span class="required">*</span>Kod pocztowy:</label>
+    									<label class="control-label"><span class="required">*</span>Zipcode:</label>
     									<div class="controls">
     										<input type="text" placeholder="" name="zip_code"  ng-model="customer.zipCode" class="input-xlarge" ng-required="true">
     										<div ng-show="customerForm.$submitted || customerForm.zip_code.$touched">
-                                                <span ng-show="customerForm.zip_code.$error.required" class="error">Wartość jest wymagana.</span>
+                                                <span ng-show="customerForm.zip_code.$error.required" class="error">Field is required.</span>
                                             </div>
     									</div>
     								</div>
     								<div class="control-group">
-    									<label class="control-label"><span class="required">*</span>Kraj:</label>
+    									<label class="control-label"><span class="required">*</span>Country:</label>
     									<div class="controls">
     										<select class="input-xlarge" name="country" ng-model="customer.country" required="">
-    											<option value="1">Polska</option>
+    											<option value="1">Poland</option>
     											<option value="2">EU</option>
     											<option value="3">US</option>
     										</select>
     										<div ng-show="customerForm.$submitted || customerForm.country.$touched">
-                                                <span ng-show="customerForm.country.$error.required" class="error">Wartość jest wymagana.</span>
+                                                <span ng-show="customerForm.country.$error.required" class="error">Field is required.</span>
                                             </div>
     									</div>
     								</div>

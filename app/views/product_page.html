@@ -25,13 +25,13 @@
 							<strong>{{ prop.name }}: </strong> <span>{{ prop.value }}</span><br>
 						</div>
 					</address>
-					<h4><strong>Cena: {{ product.details.price | formatPrice }}</strong></h4>
+					<h4><strong>Price: {{ product.details.price | formatPrice }}</strong></h4>
 				</div>
 				<div class="span5">
 					<form class="form-inline" ng-controller="CartController as cart">
-						<label>Ilość:</label>
+						<label>Quantity:</label>
 						<input type="text" class="span1" placeholder="1" ng-model="cart.quantity">
-						<button id="btnAdd2Cart" class="btn btn-inverse" type="submit" ng-click="cart.addProduct(product.idProduct)" ng-attr-data-hint="{{cart.message}}" hint>Dodaj do koszyka</button>
+						<button id="btnAdd2Cart" class="btn btn-inverse" type="submit" ng-click="cart.addProduct(product.idProduct)" ng-attr-data-hint="{{cart.message}}" hint>Add to cart</button>
 					</form>
 				</div>
 			</div>
@@ -47,7 +47,7 @@
 				<div class="span12">
 					<br>
 					<h4 class="title">
-						<span class="pull-left"><span class="text"><strong>Produkty</strong> podobne</span></span>
+						<span class="pull-left"><span class="text"><strong>Similar</strong> products</span></span>
 					</h4>
 					<div class="carousel slide" ng-controller="ProductRelatedController as productRelated">
 						<div class="carousel-inner">

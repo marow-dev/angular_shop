@@ -43,10 +43,10 @@
                 <div class="span8">
                     <div class="account pull-right">
                         <ul class="user-menu" ng-controller="UserController as user">
-                            <li><a href="#/account">Konto ({{ user.data.getName() }})</a></li>
-                            <li><a href="#/cart" ng-controller="CartController as cart">Twój koszyk ({{ cart.cart.getSum() | formatPrice }})</a></li>
-                            <li ng-show="user.data.isGuest()"><a href="#/login">Zaloguj się</a></li>
-							<li ng-show="user.data.isLogged()"><a href="" ng-click="user.data.logout()">Wyloguj</a></li>
+                            <li><a href="#/account">Account ({{ user.data.getName() }})</a></li>
+                            <li><a href="#/cart" ng-controller="CartController as cart">Your cart ({{ cart.cart.getSum() | formatPrice }})</a></li>
+                            <li ng-show="user.data.isGuest()"><a href="#/login">Log in</a></li>
+							<li ng-show="user.data.isLogged()"><a href="" ng-click="user.data.logout()">Log out</a></li>
                         </ul>
                     </div>
                 </div>
