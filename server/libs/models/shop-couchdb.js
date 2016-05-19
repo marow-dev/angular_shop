@@ -71,6 +71,7 @@ exports.register = {
 			if (res.length > 0) {
 				cb('', 409);
 			} else {
+                params.type = 'user';
 				dbShop.save(params.login, params, function(err, res) {
                     if (err) {
                         logError(err);
