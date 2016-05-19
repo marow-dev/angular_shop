@@ -4,8 +4,9 @@ angular.module('shopMenu', ['ngResource']);
 angular.module('shopProduct', ['ngResource']);
 angular.module('shopBanners', ['ngResource']);
 angular.module('shopOrder', ['ngResource']);
+angular.module('shopOrders', ['ngResource']);
 angular.module('shopUser', ['ngResource']);
-var shopApp = angular.module('shopApp', ['ngRoute', 'shopProducts', 'shopProduct', 'shopBanners', 'shopCategories', 'shopUser', 'shopMenu', 'shopOrder']);
+var shopApp = angular.module('shopApp', ['ngRoute', 'shopProducts', 'shopProduct', 'shopBanners', 'shopCategories', 'shopUser', 'shopMenu', 'shopOrder', 'shopOrders']);
 
 shopApp.controller('ProductRatingController',
     function ($scope) {
@@ -18,6 +19,7 @@ shopApp.config(['$routeProvider',
         $routeProvider
           .when('/', {templateUrl: 'app/views/main_page.html'})
           .when('/login', {templateUrl: 'app/views/login.html'})
+          .when('/account', {templateUrl: 'app/views/account.html'})
           .when('/cart', {templateUrl: 'app/views/cart.html', controller: 'CartController'})
           .when('/category/:id', {controller: 'CategoryController', templateUrl: 'app/views/category_page.html'})
           .when('/product/:id', {controller: 'ProductController', templateUrl: 'app/views/product_page.html'});

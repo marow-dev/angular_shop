@@ -1,0 +1,14 @@
+table .order-details .address {
+    float: left;
+    width: 30%;
+}
+
+table .order-details .cart {
+    float: right;
+    width: 70%;
+}
+
+table .order-details .order-header {
+    font-weight: bold;
+    padding: 10px 0px;
+}

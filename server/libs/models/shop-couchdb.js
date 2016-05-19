@@ -2,6 +2,28 @@ var cradle = require('cradle');
 var dbProducts = new (cradle.Connection)().database('products');
 var dbShop = new (cradle.Connection)().database('shop');
 
+exports.orders = {
+    by_login: function (ident, cb) {
+        dbShop.view('orders/login', {key: ident}, function (err, res) {
+            var orderIds = [];
+            if (res) {
+                res.forEach(function (k, v) {
+                    orderIds.push(v);
+                });
+                dbShop.all({limit: 10, keys: orderIds, include_docs: true}, function (err, res) {
+                    if (res) {
+                        cb(res, 200);
+                    } else {
+                        cb('', 404);
+                    }
+                });
+            } else {
+                cb('', 404);
+            }
+        });
+    }
+}
+
 exports.order = {
     save: function (order, cb) {
         var data = {};

@@ -121,7 +121,10 @@
         });
         routes.add('order', 'POST', function (ident, params) {
             model.order.save(params, sendData);
-        })
+        });
+        routes.add('account_orders', 'GET', function (ident, params) {
+            model.orders.by_login(params.login, sendData);
+        });
 
         return {
             sendData: sendData,

@@ -475,6 +475,21 @@ if (operation == 'views') {
 				console.log('View "users" created');
 			}
 		});
+    dbShop.save('_design/orders', {
+        login: {
+            map: function (doc) {
+                if (doc.customer && doc.customer.email) {
+                    emit(doc.customer.email, doc._id);
+                }
+            }
+        }
+    }, function (err) {
+        if (err) {
+            console.log('View "orders" creation error', err);
+        } else {
+            console.log('View "orders" created');
+        }
+    });
 }
 
 if (operation == 'categories') {

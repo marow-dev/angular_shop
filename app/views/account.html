@@ -1,0 +1,46 @@
+<section class="navbar main-menu">
+	<div class="navbar-inner main-menu">
+		<a href="index.html#/" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
+		<nav id="menu" class="pull-right" ng-controller="MainPageCategoriesController">
+            <component-categories></component-categories>
+        </nav>
+	</div>
+</section>
+<section class="header_text sub">
+	<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
+	<h4><span>Konto klienta</span></h4>
+</section>
+
+<section class="main-content" ng-controller="UserController as user">
+    <div class="row" ng-show="user.data.isGuest()">
+		<div class="span5">
+			<h4><span>Nie jesteś zalogowany</span></h4>
+		</div>
+	</div>
+
+    <div class="row" ng-hide="user.data.isGuest()" ng-controller="OrdersController as orders">
+        <div class="span12">
+            <table class="table" width="100%">
+                <tr ng-repeat="order in orders.list">
+                    <td>
+                        {{ order.id }}
+                        <div class="order-details">
+                            <div class="address">
+                                <div class="order-header">Dane klienta</div>
+                                {{ order.doc.customer.firstname }} {{ order.doc.customer.lastname }}<br>
+                                {{ order.doc.customer.zipCode }} {{ order.doc.customer.city }}<br>
+                                {{ order.doc.customer.address }}<br>
+                            </div>
+                            <div class="cart">
+                                <div class="order-header">Koszyk</div>
+                                <ul>
+                                    <li ng-repeat="item in order.doc.cart">{{ item.name }} {{ item.cart_count }} x {{ item.cart_price }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
