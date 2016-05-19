@@ -16,39 +16,39 @@ form span.error { color:red; }
 </section>
 <section class="header_text sub">
 	<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-	<h4><span>Logowanie lub rejestracja</span></h4>
+	<h4><span>Log in or register</span></h4>
 </section>
 
 <section class="main-content" ng-controller="UserController as user">
 	<div class="row" ng-hide="user.data.isGuest()">
 		<div class="span5">
-			<h4><span>Jesteś już zalogowany</span></h4>
+			<h4><span>You are already logged in</span></h4>
 		</div>
 	</div>
 
 	<div class="row" ng-show="user.data.isGuest()">
 		<div class="span5">
-			<h4 class="title"><span class="text"><strong>Formularz</strong> logowania</span></h4>
+			<h4 class="title"><span class="text"><strong>Log in</strong> form</span></h4>
 			<form name="login.form" ng-controller="LoginController as login" novalidate>
 				<input type="hidden" name="next" value="/">
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label">Adres e-mail</label>
+						<label class="control-label">E-mail address</label>
 						<div class="controls">
-							<input type="email" placeholder="Adres e-mail użytkownika" name="login" ng-model="login.userdata.login" class="input-xlarge" required>
+							<input type="email" placeholder="User e-mail address" name="login" ng-model="login.userdata.login" class="input-xlarge" required>
 							<div ng-show="login.form.login.$error.login">
-								<span class="error">Użytownik nie istnieje lub podane hasło jest nieprawidłowe.</span>
+								<span class="error">User doesn't exists or password is incorrect.</span>
 							</div>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Hasło</label>
+						<label class="control-label">Password</label>
 						<div class="controls">
-							<input type="password" placeholder="Podaj hasło" name="pass" ng-model="login.userdata.pass" class="input-xlarge" required>
+							<input type="password" placeholder="Password" name="pass" ng-model="login.userdata.pass" class="input-xlarge" required>
 						</div>
 					</div>
 					<div class="control-group">
-						<input tabindex="3" class="btn btn-inverse large" type="submit" value="Zaloguj" ng-disabled="login.form.$invalid" ng-click="login.submit(login.userdata, login.form.$valid)">
+						<input tabindex="3" class="btn btn-inverse large" type="submit" value="Log in" ng-disabled="login.form.$invalid" ng-click="login.submit(login.userdata, login.form.$valid)">
 					</div>
 				</fieldset>
 			</form>
@@ -56,34 +56,34 @@ form span.error { color:red; }
 		<div class="span7" ng-controller="RegisterController as register">
 			<h4 class="title"><span class="text"><strong>Formularz</strong> rejestracyjny</span></h4>
             <div class="row" ng-show="register.isMessage">
-                <h4><span>Rejestracja</span> powiodła się.</h4>
-                Mozesz teraz zalogować się korzystając z podanego loginu i hasła.
+                <h4><span>Registration</span> completed.</h4>
+                You can now log in using your email and password.
             </div>
 			<form name="register.form" class="form-stacked" novalidate ng-hide="register.isMessage">
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label">Adres e-mail</label>
+						<label class="control-label">E-mail address</label>
 						<div class="controls">
-							<input type="text" placeholder="Adres e-mail użytkownika" name="login" ng-model="register.userdata.login" class="input-xlarge" required>
+							<input type="text" placeholder="User e-mail address" name="login" ng-model="register.userdata.login" class="input-xlarge" required>
 							<div ng-show="register.form.login.$error.login">
-								<span class="error">Użytownik nie istnieje lub podane hasło jest nieprawidłowe.</span>
+								<span class="error">User already exists.</span>
 							</div>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Nazwa użytkownika</label>
+						<label class="control-label">Username</label>
 						<div class="controls">
-							<input type="text" placeholder="Nazwa użytkownika" name="name" ng-model="register.userdata.name" class="input-xlarge" required>
+							<input type="text" placeholder="User name and surname" name="name" ng-model="register.userdata.name" class="input-xlarge" required>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label">Hasło</label>
+						<label class="control-label">Password</label>
 						<div class="controls">
-							<input type="password" placeholder="Hasło" name="pass" ng-model="register.userdata.pass" class="input-xlarge" required>
+							<input type="password" placeholder="Password" name="pass" ng-model="register.userdata.pass" class="input-xlarge" required>
 						</div>
 					</div>
 					<hr>
-					<div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Utwórz konto" ng-disabled="register.form.$invalid" ng-click="register.submit(register.userdata, register.form.$valid)"></div>
+					<div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Create account" ng-disabled="register.form.$invalid" ng-click="register.submit(register.userdata, register.form.$valid)"></div>
 				</fieldset>
 			</form>
 		</div>
